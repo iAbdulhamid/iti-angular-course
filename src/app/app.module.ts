@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProdectListComponent } from './components/order/prodect-list/prodect-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,11 +21,13 @@ import { HeaderComponent } from './components/header/header.component';
     SidebarComponent,
     FooterComponent,
     HeaderComponent,
+    ProdectListComponent,
   ],
   imports: [
     // any used angular-modules in this module, AppModule...
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],  // for services....
   bootstrap: [AppComponent] // starter component for this module...

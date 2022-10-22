@@ -1,0 +1,88 @@
+<div class="mb-3">
+  <label for="" class="form-label">Categories: </label>
+  <select class="form-select form-select-lg" name="" id="" [(ngModel)]="selectedCategoryId">
+    <option *ngFor="let category of categoriesList" [value]="category.id"> {{ category.name }} </option>
+  </select>
+</div>
+
+<div>
+  <!-- TO BE REMOVED: FOR TEST ONLY -->
+  <!-- <td><input [(ngModel)]="selectedCategoryId" class="form-control" type="text" style="width: 80px;"></td> -->
+</div>
+
+<hr>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Available Qty</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty to Buy</th>
+        <th scope="col">Buy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- *ngFor comes with these variables: [index, count, first, last, even, odd, trackBy] -->
+      <!-- trackBy: used to specify iterable objects identity,
+           so, it enhances the perfomnace of *ngFor in case of changes happend to the collection.
+           Enhancement: Updates only the changes object (row), WITHOUT re-build the entire DOM -->
+
+      <!-- <tr class="" *ngFor="let product of prodList; index as i" -->
+      <!-- <tr class="" *ngFor="let product of prodList; let i = index; trackBy: trackByFn" -->
+          <!-- [class.bg-warning] = "product.quantity == 0" -->
+          <!-- [style.color] = "(product.quantity == 0) ? 'Red' : 'Black'" -->
+          <!-- [hidden] = "product.categoryID != selectedCategoryId"> -->
+          <!-- [class.d-none] = "product.categoryID != selectedCategoryId"> -->
+
+          <!-- [hidden] vs *ngIf -->
+          <!-- *ngIf [structural directive]: changes the DOM itself, remove & re-build!
+               [hidden] [class binding]: just changes the DOM element to be (hidden).
+               . USE *ngIf if DOM collection is not changing repeatedly in run time -->
+
+
+      <!-- NOTE: we can use only 1 structural directive on the same HTML element!
+            What if I want to add *ngIf with *ngFor ?!
+            USE <ng-container> as a work around, it will not show in the DOM, virtual! -->
+      <ng-container *ngFor="let product of prodList; let i = index; trackBy: trackByFn">
+        <!-- <tr *ngIf="product.quantity != 0" [hidden] = "product.categoryID != selectedCategoryId"> -->
+        <tr >
+          <!-- Save Navigation Operator (?) -->
+          <td>{{i + 1}}</td>
+          <td><img [src] = "product.imgURL"></td>
+          <td>{{product?.name}}</td>
+          <td>
+
+            <!-- <ng-template>: shows on DOM only if I called it: else outOfStock -->
+            <!-- <div *ngIf="product.quantity != 0 else outOfStock"> {{product?.quantity}} </div> -->
+            <!-- <ng-template #outOfStock> -->
+              <!-- <div style="font-weight: bold; color: red;"> Out of Stock </div> -->
+            <!-- </ng-template> -->
+
+            <ng-container [ngSwitch]="product.quantity">
+              <div *ngSwitchCase = "0" style="font-weight: bold; color: red;"> Out of Stock </div>
+              <div *ngSwitchCase = "1" style="font-weight: bold; color: green;"> Last Item!</div>
+              <div *ngSwitchDefault> {{product?.quantity}} </div>
+            </ng-container>
+
+
+
+          </td>
+          <td>{{product?.price}}</td>
+
+          <!-- Template Reference Variable (#qtyToBuy) -->
+          <td><input #qtyToBuy class="form-control" type="number" value="Buy" style="width: 80px;"></td>
+          <td><button type="button" class="btn btn-primary" (click)="buy(product.price, qtyToBuy.value)">Buy</button></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<hr/>
+<h3> Order Total Price: {{orderTotalPrice}}</h3>
