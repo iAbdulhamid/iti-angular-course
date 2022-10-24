@@ -51,7 +51,11 @@
         <tr >
           <!-- Save Navigation Operator (?) -->
           <td>{{i + 1}}</td>
-          <td><img [src] = "product.imgURL"></td>
+          <td>
+            <!-- <img LightBox highlightColor="red" [src] = "product.imgURL"> -->
+            <!-- <img LightBox="red" [src] = "product.imgURL"> -->
+            <img LightBox="green" defaultColor="yellow" [src] = "product.imgURL">
+          </td>
           <td>{{product?.name}}</td>
           <td>
 

@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProdectListComponent } from './components/order/prodect-list/prodect-list.component';
 import { FormsModule } from '@angular/forms';
+import { LightBoxDirective } from './directives/light-box.directive';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     ProdectListComponent,
+    LightBoxDirective,
   ],
   imports: [
     // any used angular-modules in this module, AppModule...
