@@ -8,6 +8,7 @@
 <div>
   <!-- TO BE REMOVED: FOR TEST ONLY -->
   <!-- <td><input [(ngModel)]="selectedCategoryId" class="form-control" type="text" style="width: 80px;"></td> -->
+  Order's Date: {{orderDate | date: 'longDate'}}
 </div>
 
 <hr>
@@ -20,6 +21,7 @@
         <th scope="col">Name</th>
         <th scope="col">Available Qty</th>
         <th scope="col">Price</th>
+        <th scope="col">Price in EGP</th>
         <th scope="col">Qty to Buy</th>
         <th scope="col">Buy</th>
       </tr>
@@ -70,11 +72,11 @@
               <div *ngSwitchCase = "1" style="font-weight: bold; color: green;"> Last Item!</div>
               <div *ngSwitchDefault> {{product?.quantity}} </div>
             </ng-container>
-
-
-
           </td>
-          <td>{{product?.price}}</td>
+
+          <!-- <td>{{product?.price | currency: 'USD' : 'code'}}</td> -->
+          <td>{{product?.price | currency: 'USD' : 'symbol'}}</td>
+          <td>{{product.price | USDtoEGP: 19.69 | currency: 'EGP' : 'symbol'}}</td>
 
           <!-- Template Reference Variable (#qtyToBuy) -->
           <td><input #qtyToBuy class="form-control" type="number" value="Buy" style="width: 80px;"></td>

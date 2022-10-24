@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProdectListComponent } from './components/order/prodect-list/prodect-list.component';
 import { FormsModule } from '@angular/forms';
 import { LightBoxDirective } from './directives/light-box.directive';
+import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
 
 
 
@@ -24,6 +25,7 @@ import { LightBoxDirective } from './directives/light-box.directive';
     HeaderComponent,
     ProdectListComponent,
     LightBoxDirective,
+    USDtoEGPPipe,
   ],
   imports: [
     // any used angular-modules in this module, AppModule...

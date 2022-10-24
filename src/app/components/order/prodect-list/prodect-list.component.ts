@@ -12,6 +12,7 @@ export class ProdectListComponent implements OnInit {
   prodList: IProduct[];
   orderTotalPrice: number = 0;
   selectedCategoryId: Number = 1;
+  orderDate: Date;
 
   constructor() {
     this.prodList = [
@@ -26,6 +27,8 @@ export class ProdectListComponent implements OnInit {
       { id: 2, name: 'Tablets'},
       { id: 3, name: 'Mobiles'},
     ];
+
+    this.orderDate = new Date();
   }
 
   ngOnInit(): void {
