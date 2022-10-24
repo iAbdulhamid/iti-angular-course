@@ -10,4 +10,5 @@
   </section>
 </div>
 <app-footer></app-footer>
-
+<app-lifecycle-hooks [testOnChanges]="myProp"></app-lifecycle-hooks>
+<button (click)="myProp = 2"> change me </button>

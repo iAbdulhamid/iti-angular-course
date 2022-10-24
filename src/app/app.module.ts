@@ -11,6 +11,7 @@ import { ProdectListComponent } from './components/order/prodect-list/prodect-li
 import { FormsModule } from '@angular/forms';
 import { LightBoxDirective } from './directives/light-box.directive';
 import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
+import { LifecycleHooksComponent } from './components/lifecycle-hooks/lifecycle-hooks.component';
 
 
 
@@ -26,6 +27,7 @@ import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
     ProdectListComponent,
     LightBoxDirective,
     USDtoEGPPipe,
+    LifecycleHooksComponent,
   ],
   imports: [
     // any used angular-modules in this module, AppModule...

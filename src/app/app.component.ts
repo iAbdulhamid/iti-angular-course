@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'iti-angular-course';
+  myProp = 1;   /// for lifecycle hooks test, ngOnChanges()
 
   sayHello(): string {
     return `Hello World from ${this.title}`;
